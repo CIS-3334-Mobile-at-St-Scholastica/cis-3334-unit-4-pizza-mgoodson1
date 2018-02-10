@@ -97,7 +97,9 @@ public class PizzaOrder implements PizzaOrderInterface {
             view.updateOrderStatusInView("Starting timer ");
             count++;
             if (count > 4) {
-                view.updateOrderStatusInView("Pizza ready to eat");
+                if (delivery)
+                    view.updateOrderStatusInView("Pizza is on its way");
+                else view.updateOrderStatusInView("Pizza ready to eat");
             } else if (count > 3) {
                 view.updateOrderStatusInView("Pizza is cooling");
                 handler.postDelayed(this, 2000);        // cool pizza for 2 seconds
